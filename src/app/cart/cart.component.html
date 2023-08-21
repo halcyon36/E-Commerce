@@ -1,0 +1,28 @@
+<div *ngIf="!isLoading && cart.Products.length" class="w-100 h-100 rounded border p-3">
+
+    <div *ngFor="let product of cart.Products" class="products">
+        <div class="card d-flex flex-row justify-content-between p-3">
+            <div class="details">
+                <h6 class="m-0">{{product['Name']}}</h6>
+                <p>{{product['Description']}}</p>
+            </div>
+            <div class="price">
+                <p>Qty: {{product['Quantity']}}</p>
+                <p>C/item: $ {{product['Cost']}}</p>
+            </div>
+        <button type="button" class="btn btn-danger" style="height: fit-content;" (click)="clearCart(product['Id'])">X</button>
+        </div>
+    </div>
+    <div class="price d-flex justify-content-end p-3">
+        <h5>Total: $ {{cart.TotalCost}}</h5>
+    </div>
+    <div class="payment d-flex gap-2">
+        <button type="button" class="btn btn-danger me-auto" (click)="clearCart()">Clear Cart</button>
+        <button type="button" class="btn btn-primary">Continue Shoping</button>
+        <button type="button" class="btn btn-success">Proceed</button>
+    </div>
+</div>
+
+<div class="d-flex w-100 h-100 align-items-center justify-content-center">
+    <h3>No Products added to cart !</h3>
+</div>
