@@ -18,8 +18,8 @@
     </div>
     <div class="payment d-flex gap-2">
         <button type="button" class="btn btn-danger me-auto" (click)="clearCart()">Clear Cart</button>
-        <button type="button" class="btn btn-primary">Continue Shoping</button>
-        <button type="button" class="btn btn-success">Proceed</button>
+        <button routerLink="homes" type="button" class="btn btn-primary">Continue Shoping</button>
+        <button (click)="createOrder()" type="button" class="btn btn-success">Proceed</button>
     </div>
 </div>
 

@@ -7,7 +7,7 @@
             <p class="card-text" style="font-size: large;">$ {{product.Cost}}</p>
 
             <div class="d-flex gap-1">
-                <a routerLink="/cart" class="btn btn-primary btn-sm"  style="font-size: small;" (click)="addProduct(product.Id)">Buy now</a>
+                <a class="btn btn-primary btn-sm"  style="font-size: small;" (click)="addProduct(product.Id, 'navToCart')">Buy now</a>
                 <button class="btn btn-outline-primary btn-sm"  style="font-size: small;" (click)="addProduct(product.Id)">Add to cart</button>
             </div>
         </div>

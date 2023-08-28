@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../service.service';
+import { ServiceService } from '../service/service.service';
 import {cart} from '../interface/cart'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,7 @@ export class CartComponent implements OnInit {
   isLoading : boolean = true
   isCart: boolean = false
 
-  constructor(private service: ServiceService){}
+  constructor(private service: ServiceService,private router: Router){}
 
   ngOnInit(){
     this.getCart()
@@ -31,8 +32,13 @@ export class CartComponent implements OnInit {
 
   async clearCart(id?){
     const res = await this.service.clearCart(id)
-    this.getCart()
-    console.log(res);
-
+    await this.getCart()
+    //need to rewrite this logic, its temprarary
+    this.cart.Products = []
+  }
+  async createOrder(){
+    const res = await this.service.createOrder()
+    await this.getCart()
+    this.router.navigate(['orders'])
   }
 }

@@ -1,0 +1,53 @@
+<div class="d-flex gap-2 mt-3 mb-1">
+    <button (click)="getOrders()" type="button" class="btn btn-dark btn-sm">All</button>
+    <button (click)="getOrders('pending')" type="button" class="btn btn-dark btn-sm">Pending</button>
+    <button (click)="getOrders('placed')" type="button" class="btn btn-dark btn-sm">Placed</button>
+    <button (click)="getOrders(null,'31109408-4dda-42d8-ac95-a1107d91a107')" type="button" class="btn btn-dark btn-sm">Id</button>
+</div>
+
+<div *ngFor="let order of orders" class="border my-3 shadow">
+    <div class="order d-flex flex-row justify-content-between p-2">
+        <div>
+            <h6 class="m-0">Order Id:</h6>
+            <p>{{order.OrderId}}</p>
+        </div>
+        <div class="border px-2" style="height: fit-content;">
+            {{order.OrderStatus}}
+        </div>
+    </div>
+    <div class="products d-flex flex-column">
+        <div class="fw-bold"><h6 class="ms-3">Products</h6></div>
+        <table style="margin-left: 2rem;">
+            <tr>
+                <th></th>
+                <th>Qty</th>
+                <th>price</th>
+            </tr>
+                <tr *ngFor="let product of order.Products">
+                    <td>
+                        <div>
+                            <p class="m-0"><b>{{product.Name}}</b></p>
+                            <p>{{product.Description}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {{product.OrderedQuantity}}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            {{product.Cost}}
+                        </div>
+                    </td>
+                </tr>
+        </table>
+        <div class="align-self-end">
+            <h6 class="me-4">TotalCost: {{order.TotalCost}}</h6>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!orders.length" class="d-flex h-100 w-100 align-items-center justify-content-center">
+    <h3>No Orders on your account</h3>
+</div>

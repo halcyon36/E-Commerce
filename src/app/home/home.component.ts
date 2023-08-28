@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../service.service';
+import { ServiceService } from '../service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { ServiceService } from '../service.service';
 export class HomeComponent implements OnInit {
   
   products : Array<any> = []
-  constructor(private service : ServiceService){}
+  constructor(private service : ServiceService, private router: Router){}
 
   ngOnInit(){
     this.getProducts()
@@ -20,10 +21,10 @@ export class HomeComponent implements OnInit {
       this.products = res.records      
     })
   }
-  async addProduct(id){
+  async addProduct(id,isNav?){
     console.log(id);
-    
     const res = await this.service.addProductToCart(id)
+    if(isNav) this.router.navigate(['cart'])
   }
 }
 

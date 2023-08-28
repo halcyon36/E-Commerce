@@ -29,4 +29,17 @@ export class ServiceService {
     } else
     return await axios.delete(URL+'cart').then(res => res.data)
   }
+
+  async createOrder(){
+    return await axios.post(URL+'orders').then(res => res.data)
+  }
+  async getOrder(status?:string,id?:string){
+    if(status){
+      return await axios.get(URL+'orders?status='+status).then(res => res.data)
+    } else if(id) {
+      return await axios.get(URL+'orders/'+id).then(res => res.data)
+    } else {
+      return await axios.get(URL+'orders').then(res => res.data)
+    }
+  }
 }

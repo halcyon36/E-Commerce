@@ -7,7 +7,8 @@ import { UserComponent } from './user/user.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
 import { RouterModule } from '@angular/router';
-import { appRoutes } from './router.module'
+import { appRoutes } from './router/router.module';
+import { OrdersComponent } from './orders/orders.component'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { appRoutes } from './router.module'
     HomeComponent,
     UserComponent,
     CartComponent,
-    ProductComponent
+    ProductComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
